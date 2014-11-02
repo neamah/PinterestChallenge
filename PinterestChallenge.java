@@ -8,13 +8,6 @@ So, if A is connected to some C on Facebook and B is connected to C on Twitter, 
 
 [FACEBOOK, TWITTER]
 
-Room for improvement:
-
-If I were to work on this further, I'd find a way to optimize the list generated for A's connections to 
-eliminate connections previously compared to all of B's networks with negative results. So, if 
-E, F and G on A's Pinterest network happen to not be in any of B's networks, then if E, F and G are 
-present on A's OTHER networks, they shouldn't be compared to B's networks again. 
-
 */
 
 import java.util.List;
@@ -69,11 +62,8 @@ public static void main(int A, int B){
 
 /* A on Pinterest. */
 	List<Integer> a_Connections = getConnections(A, SocialNetwork.PINTEREST);
-	boolean PinterestConnection = IsConnection(B, a_Connections, SocialNetwork.PINTEREST);
 	boolean FacebookConnection = IsConnection(B, a_Connections, SocialNetwork.FACEBOOK);
 	boolean TwitterConnection = IsConnection(B, a_Connections, SocialNetwork.TWITTER);
-	if (PinterestConnection)
-		System.out.println("[PINTEREST, PINTEREST]");
 	if (FacebookConnection)
 		System.out.println("[PINTEREST, FACEBOOK]");
 	if (TwitterConnection)
@@ -81,13 +71,10 @@ public static void main(int A, int B){
 
 /* A on Facebook. */
 	a_Connections = getConnections(A, SocialNetwork.FACEBOOK);
-	PinterestConnection = IsConnection(B, a_Connections, SocialNetwork.PINTEREST);
-	FacebookConnection = IsConnection(B, a_Connections, SocialNetwork.FACEBOOK);
+	boolean PinterestConnection = IsConnection(B, a_Connections, SocialNetwork.PINTEREST);
 	TwitterConnection = IsConnection(B, a_Connections, SocialNetwork.TWITTER);
 	if (PinterestConnection)
 		System.out.println("[FACEBOOK, PINTEREST]");
-	if (FacebookConnection)
-		System.out.println("[FACEBOOK, FACEBOOK]");
 	if (TwitterConnection)
 		System.out.println("[FACEBOOK, TWITTER]");
 
@@ -95,13 +82,10 @@ public static void main(int A, int B){
 	a_Connections = getConnections(A, SocialNetwork.TWITTER);
 	PinterestConnection = IsConnection(B, a_Connections, SocialNetwork.PINTEREST);
 	FacebookConnection = IsConnection(B, a_Connections, SocialNetwork.FACEBOOK);
-	TwitterConnection = IsConnection(B, a_Connections, SocialNetwork.TWITTER);
 	if (PinterestConnection)
 		System.out.println("[TWITTER, PINTEREST]");
 	if (FacebookConnection)
 		System.out.println("[TWITTER, FACEBOOK]");
-	if (TwitterConnection)
-		System.out.println("[TWITTER, TWITTER]");
 }
 }
 
