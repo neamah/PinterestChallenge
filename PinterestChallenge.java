@@ -6,7 +6,12 @@ prints out what networks they have these connections on.
 
 So, if A is connected to some C on Facebook and B is connected to C on Twitter, output should read:
 
-[FACEBOOK, TWITTER]
+[FACEBOOK, TWITTER].
+
+-getConnections() is in an unspecified class. 
+-assuming no maximum number of friends a person can have
+-assuming a list can be empty, since people might not have friends on a certain network if they're 
+not active on it.
 
 */
 
@@ -28,6 +33,9 @@ public static boolean IsConnection(int B, List<Integer> a_Connections, SocialNet
 	int ListSizeB = b_Connections.size();
 	List<Integer> smaller;
 	List<Integer> larger;
+
+	if (b_Connections.size() == 0 || a_Connections.size() == 0)
+		return false;
 
 /* Iterate over the smaller list. More efficient for large-scale comparisons */
 	int min;
